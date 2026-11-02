@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Karim Nabil — programmer, problem solver, tester, and professional across sales and finance."
+    />
+    <title>Karim Nabil — Personal Portfolio</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #f4f3ec;
+        --muted: #a4a69e;
+        --base: #111310;
+        --panel: #1b1e19;
+        --line: #343830;
+        --accent: #c5f467;
+        --orange: #ff744d;
+        --display: "Arial Black", "Helvetica Neue", sans-serif;
+        --body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(ellipse at 86% 13%, rgb(197 244 103 / 8%), transparent 29rem),
+          var(--base);
+        color: var(--ink);
+        font-family: var(--body);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 5px;
+      }
+
+      .shell {
+        width: min(1120px, calc(100% - 48px));
+        margin-inline: auto;
+      }
+
+      .topbar {
+        min-height: 84px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .brand {
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+      }
+
+      .brand span {
+        color: var(--accent);
+      }
+
+      nav {
+        display: flex;
+        gap: clamp(18px, 3vw, 36px);
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      nav a:hover {
+        color: var(--accent);
+      }
+
+      .hero {
+        min-height: 650px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.65fr);
+        align-items: center;
+        gap: 48px;
+        padding-block: 84px 104px;
+      }
+
+      .eyebrow,
+      .section-label {
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin: 24px 0 22px;
+        font-family: var(--display);
+        font-size: clamp(58px, 9.2vw, 112px);
+        line-height: 0.9;
+        letter-spacing: -0.09em;
+        text-transform: uppercase;
+      }
+
+      h1 span {
+        color: var(--accent);
+      }
+
+      .intro {
+        max-width: 560px;
+        color: #c1c3ba;
+        font-size: clamp(16px, 1.8vw, 19px);
+        line-height: 1.7;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .button {
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        font-size: 12px;
+        font-weight: 800;
+        transition: transform 160ms ease, background 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .button.primary {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: #14170e;
+      }
+
+      .portrait-card {
+        position: relative;
+        min-height: 350px;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        border: 1px solid #44493d;
+        background:
+          linear-gradient(145deg, transparent 0 48%, rgb(17 19 16 / 38%) 48%),
+          var(--accent);
+        transform: rotate(3deg);
+      }
+
+      .portrait-card::before,
+      .portrait-card::after {
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        border: 1px solid rgb(17 19 16 / 30%);
+        border-radius: 50%;
+        content: "";
+      }
+
+      .portrait-card::after {
+        width: 290px;
+        height: 290px;
+      }
+
+      .monogram {
+        z-index: 1;
+        color: #14170e;
+        font-family: var(--display);
+        font-size: clamp(94px, 13vw, 150px);
+        letter-spacing: -0.13em;
+      }
+
+      .portrait-note {
+        position: absolute;
+        right: 16px;
+        bottom: 14px;
+        z-index: 2;
+        color: #14170e;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .ticker {
+        overflow: hidden;
+        border-block: 1px solid var(--line);
+      }
+
+      .ticker-track {
+        min-width: max-content;
+        display: flex;
+        gap: 26px;
+        align-items: center;
+        padding: 17px 0;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .ticker-track span:nth-child(even) {
+        color: var(--orange);
+      }
+
+      section.content-section {
+        padding-block: 100px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-heading {
+        display: grid;
+        grid-template-columns: minmax(170px, 0.6fr) minmax(0, 1.4fr);
+        gap: 40px;
+        margin-bottom: 42px;
+      }
+
+      h2 {
+        margin: 0;
+        font-family: var(--display);
+        font-size: clamp(36px, 6vw, 64px);
+        line-height: 0.98;
+        letter-spacing: -0.075em;
+        text-transform: uppercase;
+      }
+
+      .section-copy {
+        max-width: 500px;
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .highlight-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .highlight {
+        min-height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 24px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      .highlight-index {
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 800;
+      }
+
+      .highlight h3 {
+        margin: 32px 0 8px;
+        font-size: 20px;
+        letter-spacing: -0.04em;
+      }
+
+      .highlight p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .timeline {
+        border-top: 1px solid var(--line);
+      }
+
+      .timeline-row {
+        display: grid;
+        grid-template-columns: 90px minmax(150px, 0.65fr) minmax(0, 1.35fr);
+        gap: 28px;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .timeline-marker {
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      .timeline-row h3 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .timeline-row p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .skill {
+        padding: 14px 18px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: #dedfd7;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .contact {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+        align-items: center;
+        gap: 40px;
+      }
+
+      .contact h2 {
+        max-width: 500px;
+      }
+
+      .contact h2 span {
+        color: var(--accent);
+      }
+
+      .contact-details {
+        display: grid;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .contact-link {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px 18px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .contact-link span {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .contact-link strong {
+        color: var(--ink);
+        font-size: 14px;
+        overflow-wrap: anywhere;
+      }
+
+      .contact-link:hover strong {
+        color: var(--accent);
+      }
+
+      .handshake-card {
+        padding: 12px;
+        border: 1px solid var(--line);
+        background:
+          radial-gradient(ellipse at 50% 70%, rgb(197 244 103 / 10%), transparent 58%),
+          var(--panel);
+      }
+
+      .handshake-card svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .handshake-motion {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: handshake 1.2s ease-in-out infinite alternate;
+      }
+
+      @keyframes handshake {
+        from { transform: translateY(-2px) rotate(-1deg); }
+        to { transform: translateY(2px) rotate(1deg); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .handshake-motion {
+          animation: none;
+        }
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding-block: 24px;
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      @media (max-width: 760px) {
+        .shell {
+          width: min(100% - 36px, 600px);
+        }
+
+        .topbar {
+          min-height: 72px;
+        }
+
+        nav {
+          gap: 14px;
+          font-size: 10px;
+        }
+
+        nav a:nth-child(3) {
+          display: none;
+        }
+
+        .hero {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          gap: 44px;
+          padding-block: 72px;
+        }
+
+        .portrait-card {
+          min-height: 260px;
+        }
+
+        section.content-section {
+          padding-block: 72px;
+        }
+
+        .section-heading {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+
+        .highlight-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .highlight {
+          min-height: 185px;
+        }
+
+        .timeline-row {
+          grid-template-columns: 54px 1fr;
+          gap: 12px 20px;
+        }
+
+        .timeline-row p {
+          grid-column: 2;
+        }
+
+        .contact {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 420px) {
+        nav a:nth-child(2) {
+          display: none;
+        }
+
+        h1 {
+          font-size: 55px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="shell topbar">
+      <a class="brand" href="#" aria-label="Karim Nabil home">KARIM<span>.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#journey">Journey</a>
+        <a href="#highlights">Highlights</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="shell hero" aria-labelledby="hero-title">
+        <div>
+          <div class="eyebrow">A little bit of everything. A lot of problem solving.</div>
+          <h1 id="hero-title">Meet<br />Karim <span>Nabil</span></h1>
+          <p class="intro">
+            Programmer, problem solver, tester, and professional across sales and
+            finance. I bring curiosity, clear thinking, and a get-it-done mindset
+            to every challenge.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#journey">Explore my journey <span aria-hidden="true">&nbsp;↘</span></a>
+            <a class="button" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div class="portrait-card" aria-label="Decorative Karim Nabil monogram">
+          <div class="monogram" aria-hidden="true">KN</div>
+          <div class="portrait-note">Curious by nature · Karim Nabil</div>
+        </div>
+      </section>
+
+      <div class="ticker" aria-label="Areas of experience">
+        <div class="shell ticker-track">
+          <span>Programming</span><span>✳</span><span>Problem solving</span><span>✳</span>
+          <span>Testing</span><span>✳</span><span>Sales</span><span>✳</span><span>Finance</span><span>✳</span>
+        </div>
+      </div>
+
+      <section class="shell content-section" id="highlights">
+        <div class="section-heading">
+          <div class="section-label">01 / The good stuff</div>
+          <div>
+            <h2>Work that<br />moves things forward.</h2>
+            <p class="section-copy">
+              A few moments and projects that tell the story. These cards are
+              ready for your real achievements, outcomes, and the details behind them.
+            </p>
+          </div>
+        </div>
+        <div class="highlight-grid">
+          <article class="highlight">
+            <div class="highlight-index">HIGHLIGHT / 01</div>
+            <div>
+              <h3>A proud project</h3>
+              <p>Add a project you built, what you contributed, and why it mattered.</p>
+            </div>
+          </article>
+          <article class="highlight">
+            <div class="highlight-index">HIGHLIGHT / 02</div>
+            <div>
+              <h3>A problem solved</h3>
+              <p>Share a challenge you tackled and the result of your approach.</p>
+            </div>
+          </article>
+          <article class="highlight">
+            <div class="highlight-index">HIGHLIGHT / 03</div>
+            <div>
+              <h3>A milestone reached</h3>
+              <p>Feature a career, education, or personal milestone worth remembering.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell content-section" id="journey">
+        <div class="section-heading">
+          <div class="section-label">02 / The timeline</div>
+          <div>
+            <h2>Every chapter<br />counts.</h2>
+            <p class="section-copy">
+              A simple timeline of the roles, learning, and turning points that
+              got you here. Replace each prompt with your own story.
+            </p>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-row">
+            <div class="timeline-marker">NOW</div>
+            <h3>What you’re focused on</h3>
+            <p>Add your current role, project, or next big goal.</p>
+          </article>
+          <article class="timeline-row">
+            <div class="timeline-marker">BEFORE</div>
+            <h3>A chapter that shaped you</h3>
+            <p>Add a past role, experience, or achievement and what you learned from it.</p>
+          </article>
+          <article class="timeline-row">
+            <div class="timeline-marker">START</div>
+            <h3>Where it all began</h3>
+            <p>Add the first step, interest, or opportunity that started your journey.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell content-section" id="skills">
+        <div class="section-heading">
+          <div class="section-label">03 / The toolkit</div>
+          <div>
+            <h2>Different skills.<br />One mindset.</h2>
+            <p class="section-copy">
+              A cross-functional toolkit built around learning quickly, spotting
+              what matters, and finding a practical way forward.
+            </p>
+          </div>
+        </div>
+        <div class="skill-list" aria-label="Skills">
+          <span class="skill">Programming</span>
+          <span class="skill">Problem solving</span>
+          <span class="skill">Testing &amp; quality</span>
+          <span class="skill">Sales</span>
+          <span class="skill">Finance</span>
+          <span class="skill">Communication</span>
+          <span class="skill">Continuous learning</span>
+        </div>
+      </section>
+
+      <section class="shell content-section contact" id="contact">
+        <div class="contact-copy">
+          <div class="section-label">04 / Your turn</div>
+          <h2>Have something<br />interesting? <span>Let’s talk.</span></h2>
+          <div class="contact-details">
+            <a class="contact-link" href="mailto:kareemnabil.fawzy@gmail.com">
+              <span>Email</span>
+              <strong>kareemnabil.fawzy@gmail.com</strong>
+            </a>
+            <a class="contact-link" href="tel:01096983376">
+              <span>Call</span>
+              <strong>01096983376</strong>
+            </a>
+          </div>
+        </div>
+        <div class="handshake-card">
+          <svg viewBox="0 0 360 220" role="img" aria-labelledby="handshake-title handshake-desc">
+            <title id="handshake-title">A friendly handshake</title>
+            <desc id="handshake-desc">A cartoon boy and a man shake hands.</desc>
+            <circle cx="180" cy="111" r="87" fill="none" stroke="#343830" />
+            <circle cx="180" cy="111" r="65" fill="none" stroke="#343830" />
+            <path d="M34 205h292" stroke="#454a40" stroke-width="2" />
+            <g aria-hidden="true">
+              <path d="M48 204v-62c0-23 16-39 39-39h17c23 0 39 16 39 39v62" fill="#ff744d" />
+              <path d="M218 204v-62c0-23 16-39 39-39h17c23 0 39 16 39 39v62" fill="#c5f467" />
+              <path d="M78 104c-2-29 12-47 34-47s37 18 34 47c-6 15-18 23-34 23s-28-8-34-23Z" fill="#c9875f" />
+              <path d="M73 87c1-25 16-39 39-39 19 0 33 12 37 34-12-10-24-14-38-14-14 0-25 7-38 19Z" fill="#28231f" />
+              <circle cx="100" cy="91" r="2.5" fill="#201c18" />
+              <circle cx="124" cy="91" r="2.5" fill="#201c18" />
+              <path d="M104 105c5 4 11 4 16 0" fill="none" stroke="#70402f" stroke-linecap="round" stroke-width="2" />
+              <path d="M211 100c-2-28 12-46 34-46s37 18 34 46c-6 15-18 23-34 23s-28-8-34-23Z" fill="#d69c73" />
+              <path d="M207 86c3-27 17-40 39-40 18 0 31 11 35 33-14-8-24-12-38-11-14 0-24 6-36 18Z" fill="#d8d0bb" />
+              <circle cx="231" cy="88" r="2.5" fill="#28231f" />
+              <circle cx="255" cy="88" r="2.5" fill="#28231f" />
+              <path d="M235 102c5 4 11 4 16 0" fill="none" stroke="#84583e" stroke-linecap="round" stroke-width="2" />
+              <path d="M112 123c14 0 26 6 35 17l27 19-16 20-38-24c-10-7-15-17-8-32Z" fill="#c9875f" />
+              <path d="M249 123c-14 0-26 6-35 17l-27 19 16 20 38-24c10-7 15-17 8-32Z" fill="#d69c73" />
+              <path d="M144 137c9 0 17 4 24 11l22 17-13 15-26-18c-8-5-13-13-7-25Z" fill="#ff744d" />
+              <path d="M216 137c-9 0-17 4-24 11l-22 17 13 15 26-18c8-5 13-13 7-25Z" fill="#c5f467" />
+              <g class="handshake-motion">
+                <path d="M157 151c8-9 15-10 23-3l11 9 10-7c5-4 11-2 14 3 3 5 1 11-4 14l-21 17c-4 3-10 3-14 0l-18-14c-6-5-6-13-1-19Z" fill="#dca078" stroke="#9f694d" stroke-width="2" />
+                <path d="m177 154 12 10m-21-3 13 11m23-12-10 9" fill="none" stroke="#9f694d" stroke-linecap="round" stroke-width="2" />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell footer">
+      <span>© <span id="year"></span> Karim Nabil</span>
+      <span>Made with curiosity.</span>
+    </footer>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
